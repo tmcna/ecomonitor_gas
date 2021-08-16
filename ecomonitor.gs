@@ -10,7 +10,6 @@ function doPost(e) {
 }
 
 function notify(message) {
-
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getSheetByName('Settings');
   var topicURL = sheet.getRange("B1").getValue();
