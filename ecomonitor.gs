@@ -2,8 +2,9 @@ function doPost(e) {
   var ss       = SpreadsheetApp.getActiveSpreadsheet();
   var sheet    = ss.getSheetByName('monitor');
   var PostData = JSON.parse(e.postData.contents);
+  var co2      = 400;
 
-  sheet.appendRow([PostData.date, PostData.temperature, PostData.humidity]);
+  sheet.appendRow([PostData.date, PostData.temperature, PostData.humidity, co2]);
 
   message = Utilities.formatString("部屋の気温が %s 度、湿度が %s %となっています。温度調節をしましょう。", PostData.temperature, PostData.humidity);
   notify(message)
