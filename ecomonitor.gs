@@ -13,10 +13,10 @@ function doPost(e) {
 function notify(message) {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getSheetByName('Settings');
-  var topicURL = sheet.getRange("B1").getValue();
-  var token = sheet.getRange("B2").getValue();
-  var mention = sheet.getRange("B3").getValue();
-  var sendMessage = sheet.getRange("B4").getValue();
+  var topicURL = sheet.getRange("B2").getValue();
+  var token = sheet.getRange("B3").getValue();
+  var mention = sheet.getRange("B4").getValue();
+  var sendMessage = sheet.getRange("B5").getValue();
 
   if (sendMessage !== 'Yes') {
     return
