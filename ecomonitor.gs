@@ -1,13 +1,40 @@
 function doPost(e) {
+  var PostData = JSON.parse(e.postData.contents);
+
+  //ecomonitor(PostData.date, PostData.temperature, PostData.humidity, PostData.co2);
+  ecomonitor(PostData);
+}
+
+// for Test
+function test_ecomonitor() {
+  //ecomonitor('2021/08/20 15:50:26', 30, 70, 2000);
+
+  const p = {
+      "date": '2021/08/20 15:50:26',
+      "temperature": 30,
+      "humidity": 70,
+      "co2": 2000
+  };
+  console.log(p.date);
+  ecomonitor(p);
+}
+
+function ecomonitor(p) {
+//function ecomonitor(date, temperature, humidity, co2) {
   var ss       = SpreadsheetApp.getActiveSpreadsheet();
   var sheet    = ss.getSheetByName('monitor');
-  var PostData = JSON.parse(e.postData.contents);
-  // var co2      = 400;
 
-  sheet.appendRow([PostData.date, PostData.temperature, PostData.humidity, PostData.co2]);
+  sheet.appendRow([p.date, p.temperature, p.humidity, p.co2]);
 
-  message = Utilities.formatString("部屋の気温が %s 度、湿度が %s %となっています。温度調節をしましょう。", PostData.temperature, PostData.humidity);
-  notify(message)
+  if (p.co2 >= 1000) {
+    message = Utilities.formatString(
+      "こんにちは！安全衛生委員です。\nなんと！お部屋のCO2濃度が %s ppm になっちゃってます。ちょーまずい！激ヤバです！\n1000ppmを超えないようこまめに換気しましょうね！\n現在の気温は %s ℃、湿度は %s % です。",
+      p.co2,
+      p.temperature,
+      p.humidity
+    );
+    notify(message)
+  }
 }
 
 function notify(message) {
