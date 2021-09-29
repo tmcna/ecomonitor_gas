@@ -4,7 +4,7 @@ function testEcomonitor() {
       "date": '2021/08/20 15:50:26',
       "temperature": 30,
       "humidity": 70,
-      "co2": 500
+      "co2": 1200
   };
   console.log(p.date);
   ecomonitor(p);
