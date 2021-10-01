@@ -21,8 +21,8 @@ function notifyTypetalk(conf, p) {
   let token = conf.getParam('token');
   let mention = conf.getParam('mention');
   let sendMessage = conf.getParam('send_message');
-  let co2_max = conf.getParam('co2_max');
-  let co2_min = conf.getParam('co2_min');
+  let co2_high = conf.getParam('co2_high');
+  let co2_low = conf.getParam('co2_low');
   let last_co2 = conf.getParam('last_co2');
 
   let message = null;
@@ -31,7 +31,7 @@ function notifyTypetalk(conf, p) {
     return;
   }
 
-  if (p.co2 >= co2_max && last_co2 < co2_max) {
+  if (p.co2 >= co2_high && last_co2 < co2_high) {
     // CO2濃度が上限を超え、前回のCO2濃度が上限を超えていなかった場合にメッセージを通知する
     message = Utilities.formatString(
       "こんにちは！安全衛生委員です。\n" + 
@@ -44,7 +44,7 @@ function notifyTypetalk(conf, p) {
     );
   }
 
-  if (p.co2 <= co2_min && last_co2 > co2_min) {
+  if (p.co2 <= co2_low && last_co2 > co2_low) {
     // CO2濃度が下限を下回り、前回のCO2濃度が下限を超えていた場合にメッセージを通知する
     message = Utilities.formatString(
       "こんにちは！安全衛生委員です。\nわーい、お部屋のCO2濃度が %s ppm に戻ったみたいですよ。よかったですね！\n" +
