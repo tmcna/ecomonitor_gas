@@ -3,8 +3,8 @@ function testEcomonitor() {
   const p = {
       "date": '2021/08/20 15:50:26',
       "temperature": 30,
-      "humidity": 70,
-      "co2": 1200
+      "humidity": 41,
+      "co2": 438
   };
   console.log(p.date);
   ecomonitor(p);

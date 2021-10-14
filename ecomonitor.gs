@@ -34,7 +34,7 @@ function notifyTypetalk(conf, p) {
   if (p.co2 >= co2_high && last_co2 < co2_high) {
     // CO2濃度が上限を超え、前回のCO2濃度が上限を超えていなかった場合にメッセージを通知する
     message = Utilities.formatString(
-      "こんにちは！安全衛生委員です。\n" + 
+      "こんにちは！衛生委員です。\n" + 
       "なんと！お部屋のCO2濃度が %s ppm になっちゃってます。ちょーまずい！激ヤバです！\n" + 
       "適正なCO2濃度の目安は1000ppm以下みたいなので、こまめに換気しましょうね！\n" +
       "現在の気温は %s ℃、湿度は %s % です。",
@@ -47,7 +47,7 @@ function notifyTypetalk(conf, p) {
   if (p.co2 <= co2_low && last_co2 > co2_low) {
     // CO2濃度が下限を下回り、前回のCO2濃度が下限を超えていた場合にメッセージを通知する
     message = Utilities.formatString(
-      "こんにちは！安全衛生委員です。\nわーい、お部屋のCO2濃度が %s ppm に戻ったみたいですよ。よかったですね！\n" +
+      "こんにちは！衛生委員です。\nわーい、お部屋のCO2濃度が %s ppm に戻ったみたいですよ。よかったですね！\n" +
       "適正なCO2濃度の目安は1000ppm以下だそうです。これからもこまめな換気を心がけてくださいね！\n" +
       "現在の気温は %s ℃、湿度は %s % です。",
       p.co2,
